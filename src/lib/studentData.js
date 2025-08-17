@@ -55,6 +55,18 @@ export function getStudentBySerial(serial) {
     return student || null;
 }
 
+export function getStudentByRegistrationNumber(registrationNumber) {
+    const students = loadStudentData();
+    for (const student of students.values()) {
+        if (student.registrationNumber === registrationNumber) {
+            console.log(`Found student by registration ${registrationNumber}:`, student);
+            return student;
+        }
+    }
+    console.log(`No student found with registration ${registrationNumber}`);
+    return null;
+}
+
 // src/routes/api/student/[serial]/+server.js
 import { json } from '@sveltejs/kit';
 import { getStudentBySerial } from '$lib/studentData.js';
