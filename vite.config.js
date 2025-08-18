@@ -24,6 +24,6 @@ export default defineConfig({
 		host: true,
 		port: 5173,
 		strictPort: true,
-		allowedHosts: ['akeziy-ip-103-169-64-93.tunnelmole.net'],
+		allowedHosts: ['vtleqb-ip-103-169-64-93.tunnelmole.net'],
 	}
 });

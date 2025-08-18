@@ -29,24 +29,98 @@
 <!-- Loading Animation -->
 {#if showAnimation}
   <div
-    class="fixed inset-0 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 z-50 flex items-center justify-center"
+    class="fixed inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 z-50 flex flex-col items-center justify-center px-4"
     class:fade-out={animationStep === 3}
   >
-    <!-- Animated Drop -->
-    <div class="relative">
-      <div class="drop" class:drop-animate={animationStep >= 0}></div>
+    <!-- Animated Certificate Icon -->
+    <div class="relative mb-8 flex flex-col items-center">
+      <!-- Morphing Certificate Icon -->
+      <div class="cert-morph" class:cert-animate={animationStep >= 0}>
+        <div class="cert-particles">
+          <div class="particle particle-1"></div>
+          <div class="particle particle-2"></div>
+          <div class="particle particle-3"></div>
+          <div class="particle particle-4"></div>
+        </div>
 
-      <!-- Checkmark that appears from the drop -->
-      {#if animationStep >= 1}
-        <div
-          class="checkmark-container"
-          class:checkmark-appear={animationStep >= 1}
-        >
+        {#if animationStep >= 1}
           <div
-            class="bg-green-500 rounded-full w-24 h-24 flex items-center justify-center shadow-lg shadow-green-500/50 checkmark-bounce"
+            class="cert-icon-container"
+            class:cert-icon-appear={animationStep >= 1}
+          >
+            <div
+              class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl w-24 h-24 flex items-center justify-center shadow-2xl shadow-blue-500/50 cert-pulse"
+            >
+              <svg
+                class="w-12 h-12 text-white cert-draw"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+            </div>
+          </div>
+        {/if}
+      </div>
+    </div>
+
+    <!-- SIIT Text Animation - Now properly spaced below -->
+    {#if animationStep >= 2}
+      <div class="text-center px-4 mt-12">
+        <div
+          class="text-2xl sm:text-3xl lg:text-4xl text-white font-cursive writing-animation leading-relaxed"
+        >
+          Standard Institute of Information Technology
+        </div>
+      </div>
+    {/if}
+  </div>
+{/if}
+
+<main
+  class="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900"
+  class:opacity-0={showAnimation}
+>
+  <!-- Modern Background Pattern -->
+  <div class="fixed inset-0">
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(16,185,129,0.3),rgba(255,255,255,0))]"
+    ></div>
+    <div class="cert-orbs">
+      <div class="cert-orb cert-orb-1"></div>
+      <div class="cert-orb cert-orb-2"></div>
+      <div class="cert-orb cert-orb-3"></div>
+    </div>
+  </div>
+
+  <!-- Content Container -->
+  <div class="relative z-10 min-h-screen">
+    <!-- Mobile-First Header -->
+    <header class="w-full bg-white/5 border-b border-white/10 p-4 sm:p-6">
+      <div class="flex flex-col items-center text-center space-y-4">
+        <!-- Verified Text -->
+        <div class="text-center">
+          <h1 class="text-white font-bold text-xl font-space-grotesk mb-1">
+            VERIFIED
+          </h1>
+          <p class="text-blue-300 text-sm font-inter mb-6">
+            Certificate Authentic
+          </p>
+        </div>
+
+        <!-- Checkmark and Logo Side by Side -->
+        <div class="flex items-center justify-center gap-6">
+          <div
+            class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center verified-pulse"
           >
             <svg
-              class="w-12 h-12 text-white checkmark-draw"
+              class="w-6 h-6 text-white"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -56,256 +130,545 @@
                 stroke-linejoin="round"
                 stroke-width="3"
                 d="M5 13l4 4L19 7"
-              ></path>
+              />
             </svg>
           </div>
-        </div>
-      {/if}
-
-      <!-- SIIT Text Animation -->
-      {#if animationStep >= 2}
-        <div class="mt-8 text-center">
-          <div class="text-4xl text-white font-cursive writing-animation">
-            Standard Institute of Information Technology
+          <div class="w-16 h-16">
+            <img
+              src="/logo_white.png"
+              alt="SIIT"
+              class="w-full h-full object-contain"
+            />
           </div>
         </div>
-      {/if}
-    </div>
-  </div>
-{/if}
-
-<main
-  class="min-h-screen flex items-center justify-center p-4"
-  class:opacity-0={showAnimation}
->
-  <!-- Background with elegant tech/education theme -->
-  <div
-    class="fixed inset-0 bg-cover bg-center bg-no-repeat"
-    style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80');"
-  ></div>
-
-  <!-- Enhanced semi-transparent glass card with shine -->
-  <div
-    class="relative backdrop-blur-md bg-gradient-to-br from-white/30 via-white/25 to-white/20 border border-white/50 rounded-3xl shadow-2xl shadow-cyan-500/20 p-8 max-w-4xl w-full mx-4 shine-effect"
-  >
-    <!-- Verified mark in top left corner -->
-    <div class="absolute top-4 left-4 w-16 h-16 opacity-90 z-10">
-      <div
-        class="w-full h-full bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 pulse-glow"
-      >
-        <svg
-          class="w-10 h-10 text-white"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-            clip-rule="evenodd"
-          />
-        </svg>
       </div>
-    </div>
+    </header>
 
-    <!-- SIIT Logo in top right corner -->
-    <div class="absolute top-4 right-4 w-28 h-28 opacity-90 z-10">
-      <img
-        src="/logo_white.png"
-        alt="SIIT Logo"
-        class="w-full h-full object-contain drop-shadow-lg"
-      />
-    </div>
-
-    <!-- Certificate content -->
-    <div class="space-y-6 text-white mt-4">
-      <div class="text-center mb-8">
-        <h1
-          class="text-3xl font-bold mb-2 text-white/95 drop-shadow-sm font-ubuntu"
-        >
-          Certificate Verification
-        </h1>
+    <!-- Main Content - Mobile Optimized -->
+    <div class="px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <!-- Hero Section -->
+      <div class="text-center space-y-6 slide-in-up">
         <div
-          class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto rounded-full shadow-sm shimmer"
-        ></div>
-      </div>
-
-      <div class="grid gap-4 text-lg">
-        <!-- Registration Number at top -->
-        <div class="flex flex-col sm:flex-row">
-          <span
-            class="font-semibold text-cyan-200 min-w-[200px] mb-1 sm:mb-0 font-ubuntu"
-            >Registration Number:</span
-          >
-          <span class="text-white/95 font-medium font-ubuntu"
-            >{student.registrationNumber}</span
-          >
-        </div>
-
-        <!-- Desktop: Side by side for Student Name and Father Name -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <div class="flex flex-col">
-            <span class="font-semibold text-cyan-200 mb-1 font-ubuntu"
-              >Student Name:</span
-            >
-            <span class="text-white/95 font-medium text-xl font-ubuntu"
-              >{student.studentName}</span
-            >
-          </div>
-
-          <div class="flex flex-col">
-            <span class="font-semibold text-cyan-200 mb-1 font-ubuntu"
-              >Father/Guardian:</span
-            >
-            <span class="text-white/95 font-medium text-xl font-ubuntu"
-              >{student.fatherName}</span
-            >
-          </div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row">
-          <span
-            class="font-semibold text-cyan-200 min-w-[200px] mb-1 sm:mb-0 font-ubuntu"
-            >Course:</span
-          >
-          <span class="text-white/95 font-medium font-ubuntu"
-            >{student.course}</span
-          >
-        </div>
-
-        <div class="flex flex-col">
-          <span class="font-semibold text-cyan-200 mb-2 font-ubuntu"
-            >Course Content:</span
-          >
-          <span
-            class="text-black/95 text-base leading-relaxed bg-white/15 p-4 rounded-xl border border-white/30 backdrop-blur-sm font-ubuntu"
-            >{student.courseContent}</span
-          >
-        </div>
-
-        <div class="flex flex-col sm:flex-row">
-          <span
-            class="font-semibold text-cyan-200 min-w-[200px] mb-1 sm:mb-0 font-ubuntu"
-            >Age:</span
-          >
-          <span class="text-white/95 font-medium font-ubuntu"
-            >{student.age} years</span
-          >
-        </div>
-
-        <div class="flex flex-col sm:flex-row">
-          <span
-            class="font-semibold text-cyan-200 min-w-[200px] mb-1 sm:mb-0 font-ubuntu"
-            >Grade:</span
-          >
-          <span
-            class="text-2xl font-bold text-green-300 drop-shadow-sm font-ubuntu"
-            >{student.grade}</span
-          >
-        </div>
-      </div>
-
-      <!-- Verified By Section -->
-      <div class="mt-8 pt-6">
-        <h3
-          class="text-center text-cyan-200 font-semibold mb-6 font-ubuntu text-lg"
+          class="inline-flex items-center justify-center w-24 h-24 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl certificate-glow"
         >
-          Verified By
-        </h3>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <!-- Program Coordinator -->
-          <div class="text-center">
-            <div class="text-white/90 font-medium font-serif text-lg mb-1">
-              Program Coordinator
-            </div>
-            <div class="text-white/95 font-serif text-xl font-semibold">
-              Muhammad Arsalan Ahmad
+          <svg
+            class="w-12 h-12 sm:w-10 sm:h-10 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            />
+          </svg>
+        </div>
+        <div class="space-y-4">
+          <h1
+            class="text-4xl sm:text-3xl lg:text-4xl font-bold text-white font-space-grotesk leading-tight"
+          >
+            Certificate of
+            <span
+              class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mt-2"
+            >
+              Achievement
+            </span>
+          </h1>
+          <p class="text-gray-300 font-inter text-lg sm:text-base">
+            Issued by Standard Institute of Information Technology
+          </p>
+        </div>
+      </div>
+
+      <!-- Student Profile Card -->
+      <div class="card-modern slide-in-left">
+        <div class="space-y-4">
+          <div class="flex items-center justify-center">
+            <div
+              class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center avatar-glow"
+            >
+              <span class="text-white font-bold text-2xl font-space-grotesk">
+                {student.studentName.charAt(0)}
+              </span>
             </div>
           </div>
-
-          <!-- Principal -->
-          <div class="text-center">
-            <div class="text-white/90 font-medium font-serif text-lg mb-1">
-              Principal
-            </div>
-            <div class="text-white/95 font-serif text-xl font-semibold">
-              Aashiq Hussain Bukhari
+          <div class="text-center space-y-3">
+            <h2 class="text-2xl font-bold text-white font-space-grotesk">
+              {student.studentName}
+            </h2>
+            <p class="text-gray-300 font-inter">
+              Son/Daughter of {student.fatherName}
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-3 mt-4">
+              <span
+                class="px-4 py-2 bg-green-500/20 text-green-300 text-sm font-semibold rounded-full border border-green-500/30 font-inter"
+              >
+                Grade: {student.grade}
+              </span>
+              <span
+                class="px-4 py-2 bg-blue-500/20 text-blue-300 text-sm font-semibold rounded-full border border-blue-500/30 font-inter"
+              >
+                Age: {student.age}
+              </span>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="text-center mt-8 pt-6 border-t border-white/40">
-        <p class="text-white/80 text-sm font-medium font-ubuntu">
+      <!-- Course Information -->
+      <div class="card-modern slide-in-right">
+        <div class="space-y-6">
+          <div class="text-center">
+            <div
+              class="inline-flex items-center justify-center w-12 h-12 bg-orange-500/20 rounded-xl mb-3"
+            >
+              <svg
+                class="w-6 h-6 text-orange-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white font-space-grotesk">
+              Course Completed
+            </h3>
+            <p class="text-orange-300 font-inter mt-2 text-lg">
+              {student.course}
+            </p>
+          </div>
+
+          <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+            <h4
+              class="text-base font-semibold text-emerald-300 mb-3 font-space-grotesk text-center"
+            >
+              Course Content
+            </h4>
+            <p class="text-gray-300 leading-relaxed font-inter text-center">
+              {student.courseContent}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registration Details -->
+      <div class="card-modern slide-in-up">
+        <div class="space-y-6">
+          <div class="text-center">
+            <div
+              class="inline-flex items-center justify-center w-12 h-12 bg-cyan-500/20 rounded-xl mb-3"
+            >
+              <svg
+                class="w-6 h-6 text-cyan-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white font-space-grotesk">
+              Registration Details
+            </h3>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl p-6 border border-cyan-500/20 space-y-4"
+          >
+            <div class="text-center">
+              <p
+                class="text-cyan-300 text-sm font-semibold mb-2 font-space-grotesk"
+              >
+                REGISTRATION NUMBER
+              </p>
+              <p class="text-white font-mono text-lg font-bold">
+                {student.registrationNumber}
+              </p>
+            </div>
+            <div class="text-center">
+              <p
+                class="text-cyan-300 text-sm font-semibold mb-2 font-space-grotesk"
+              >
+                VERIFIED ON
+              </p>
+              <p class="text-white text-base font-bold font-inter">
+                {new Date().toLocaleDateString()}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Signatures Section -->
+      <div class="card-modern slide-in-scale">
+        <div class="text-center space-y-6">
+          <h3 class="text-xl font-semibold text-white font-space-grotesk">
+            Authorized By
+          </h3>
+
+          <div class="space-y-6">
+            <div class="text-center">
+              <div
+                class="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center"
+              >
+                <span class="text-white font-bold text-lg">MA</span>
+              </div>
+              <p class="text-white font-semibold text-lg font-space-grotesk">
+                Muhammad Arsalan Ahmad
+              </p>
+              <p class="text-gray-400 text-sm font-inter">
+                Program Coordinator
+              </p>
+            </div>
+
+            <div class="text-center">
+              <div
+                class="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-pink-500 to-rose-600 rounded-lg flex items-center justify-center"
+              >
+                <span class="text-white font-bold text-lg">AH</span>
+              </div>
+              <p class="text-white font-semibold text-lg font-space-grotesk">
+                Aashiq Hussain Bukhari
+              </p>
+              <p class="text-gray-400 text-sm font-inter">Principal</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons Section -->
+      <div class="card-modern slide-in-scale">
+        <div class="space-y-6">
+          <h3 class="text-xl font-semibold text-white font-space-grotesk text-center">
+            Actions
+          </h3>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
+            <button
+              on:click={() => window.print()}
+              class="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] font-inter shadow-lg shadow-blue-500/25 flex items-center justify-center gap-3"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
+                />
+              </svg>
+              <span>Print Certificate</span>
+            </button>
+
+            <a
+              href="/"
+              class="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white font-semibold py-3 px-6 rounded-2xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] font-inter flex items-center justify-center gap-3"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                />
+              </svg>
+              <span>Back to Home</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Institution Footer -->
+      <div class="text-center space-y-4 pt-6">
+        <h4 class="text-white font-bold text-xl font-space-grotesk">
           Standard Institute of Information Technology
+        </h4>
+        <p class="text-blue-300 text-base italic font-inter">
+          "Knowledge, Skill, Integrity."
         </p>
-        <p class="text-white/70 text-xs mt-1 font-ubuntu">
-          Certificate verified on {new Date().toLocaleDateString()}
-        </p>
+        <div class="flex items-center justify-center gap-2 text-gray-400">
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+            />
+          </svg>
+          <span class="font-inter text-sm">For assistance: +92 321 9392004</span>
+        </div>
       </div>
     </div>
   </div>
 </main>
 
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital@0,1;wght@300;400;500;700&family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital@0,1;wght@400;500;600;700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap");
 
   :global(body) {
     margin: 0;
     font-family:
-      "Ubuntu",
+      "Inter",
       -apple-system,
       BlinkMacSystemFont,
       "Segoe UI",
       Roboto,
       sans-serif;
-    background: #0a0a0a;
+    background: #0f0f23;
+    overflow-x: hidden;
   }
 
   :global(*) {
     box-sizing: border-box;
   }
 
-  .font-ubuntu {
-    font-family: "Ubuntu", sans-serif;
+  .font-inter {
+    font-family: "Inter", sans-serif;
   }
 
-  .font-serif {
-    font-family: "Playfair Display", serif;
+  .font-space-grotesk {
+    font-family: "Space Grotesk", sans-serif;
   }
 
-  /* Shine effect for glass */
-  .shine-effect {
-    position: relative;
-    overflow: hidden;
+  .font-cursive {
+    font-family: "Dancing Script", cursive;
   }
 
-  .shine-effect::before {
-    content: "";
+  /* Modern Background Elements */
+  .cert-orbs {
     position: absolute;
-    top: 0;
-    left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .cert-orb {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 30% 30%,
+      rgba(59, 130, 246, 0.3),
+      rgba(59, 130, 246, 0.1)
     );
-    animation: shine 3s infinite;
-    border-radius: 1.5rem;
+    animation: certFloat 25s infinite ease-in-out;
+    filter: blur(1px);
   }
 
-  @keyframes shine {
-    0% {
-      left: -100%;
-    }
+  .cert-orb-1 {
+    width: 250px;
+    height: 250px;
+    top: 15%;
+    left: -8%;
+    animation-delay: 0s;
+  }
+
+  .cert-orb-2 {
+    width: 350px;
+    height: 350px;
+    top: 55%;
+    right: -12%;
+    animation-delay: 8s;
+    background: radial-gradient(
+      circle at 30% 30%,
+      rgba(147, 51, 234, 0.25),
+      rgba(147, 51, 234, 0.08)
+    );
+  }
+
+  .cert-orb-3 {
+    width: 180px;
+    height: 180px;
+    bottom: 15%;
+    left: 45%;
+    animation-delay: 16s;
+    background: radial-gradient(
+      circle at 30% 30%,
+      rgba(99, 102, 241, 0.2),
+      rgba(99, 102, 241, 0.05)
+    );
+  }
+
+  @keyframes certFloat {
+    0%,
     100% {
-      left: 100%;
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-25px) translateX(20px) rotate(90deg);
+    }
+    50% {
+      transform: translateY(15px) translateX(-15px) rotate(180deg);
+    }
+    75% {
+      transform: translateY(-10px) translateX(30px) rotate(270deg);
     }
   }
 
-  /* Animation Styles */
+  /* Modern Card Design */
+  .card-modern {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-modern:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  @media (min-width: 640px) {
+    .card-modern {
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  /* Verified Pulse Animation */
+  .verified-pulse {
+    animation: verifiedPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes verifiedPulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+      transform: scale(1.05);
+    }
+  }
+
+  /* Certificate Glow */
+  .certificate-glow {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
+    animation: certificateGlow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes certificateGlow {
+    from {
+      box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
+    }
+    to {
+      box-shadow: 0 0 60px rgba(59, 130, 246, 0.6);
+    }
+  }
+
+  /* Avatar Glow */
+  .avatar-glow {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+    animation: avatarGlow 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes avatarGlow {
+    from {
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+    }
+    to {
+      box-shadow: 0 0 45px rgba(59, 130, 246, 0.5);
+    }
+  }
+
+  /* Slide Animations */
+  .slide-in-up {
+    animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .slide-in-left {
+    animation: slideInLeft 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    opacity: 0;
+  }
+
+  .slide-in-right {
+    animation: slideInRight 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    opacity: 0;
+  }
+
+  .slide-in-scale {
+    animation: slideInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Loading Animation Styles */
   .fade-out {
     animation: fadeOut 0.5s ease-out forwards;
   }
@@ -316,90 +679,129 @@
     }
   }
 
-  .drop {
-    width: 20px;
-    height: 20px;
-    background: linear-gradient(to bottom, #10b981, #059669);
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    position: absolute;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
+  /* New Certificate Loading Animation */
+  .cert-morph {
+    position: relative;
+    width: 120px;
+    height: 120px;
   }
 
-  .drop-animate {
-    animation: dropFall 0.8s ease-in forwards;
+  .cert-animate {
+    animation: certMorph 0.8s ease-out forwards;
   }
 
-  @keyframes dropFall {
+  @keyframes certMorph {
     0% {
-      top: -100px;
-      opacity: 1;
-    }
-    70% {
-      top: 0px;
-    }
-    100% {
-      top: 0px;
+      transform: scale(0) rotate(180deg);
       opacity: 0;
     }
-  }
-
-  .checkmark-container {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-  }
-
-  .checkmark-appear {
-    animation: checkmarkAppear 0.5s ease-out forwards;
-  }
-
-  @keyframes checkmarkAppear {
-    0% {
-      opacity: 0;
-      transform: translateX(-50%) scale(0.5);
+    50% {
+      transform: scale(1.2) rotate(90deg);
+      opacity: 0.8;
     }
     100% {
+      transform: scale(1) rotate(0deg);
       opacity: 1;
-      transform: translateX(-50%) scale(1);
     }
   }
 
-  .checkmark-bounce {
-    animation: bounce 0.6s ease-out;
+  .cert-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
 
-  @keyframes bounce {
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+    border-radius: 50%;
+    animation: particleFloat 2s ease-in-out infinite;
+  }
+
+  .particle-1 {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+
+  .particle-2 {
+    top: 20%;
+    right: 15%;
+    animation-delay: 0.3s;
+  }
+
+  .particle-3 {
+    bottom: 25%;
+    left: 20%;
+    animation-delay: 0.6s;
+  }
+
+  .particle-4 {
+    bottom: 15%;
+    right: 10%;
+    animation-delay: 0.9s;
+  }
+
+  @keyframes particleFloat {
     0%,
-    20%,
-    53%,
-    80%,
     100% {
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
+      opacity: 0.7;
     }
-    40%,
-    43% {
-      transform: translateY(-10px);
-    }
-    70% {
-      transform: translateY(-5px);
-    }
-    90% {
-      transform: translateY(-2px);
+    50% {
+      transform: translateY(-20px) scale(1.5);
+      opacity: 1;
     }
   }
 
-  .checkmark-draw {
-    stroke-dasharray: 20;
-    stroke-dashoffset: 20;
-    animation: drawCheck 0.5s ease-out 0.2s forwards;
+  .cert-icon-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
   }
 
-  @keyframes drawCheck {
+  .cert-icon-appear {
+    animation: certIconAppear 0.6s ease-out 0.2s forwards;
+  }
+
+  @keyframes certIconAppear {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.3) rotateY(180deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+    }
+  }
+
+  .cert-pulse {
+    animation: certPulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes certPulse {
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+    }
+  }
+
+  .cert-draw {
+    stroke-dasharray: 24;
+    stroke-dashoffset: 24;
+    animation: drawCert 0.8s ease-out 0.4s forwards;
+  }
+
+  @keyframes drawCert {
     to {
       stroke-dashoffset: 0;
     }
@@ -421,38 +823,93 @@
     }
   }
 
-  /* Pulse glow for verified badge */
-  .pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite alternate;
-  }
-
-  @keyframes pulseGlow {
-    from {
-      box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
-    }
-    to {
-      box-shadow: 0 0 30px rgba(34, 197, 94, 0.6);
-    }
-  }
-
-  /* Shimmer effect for the line */
-  .shimmer {
-    background: linear-gradient(90deg, #06b6d4, #3b82f6, #06b6d4);
-    background-size: 200% 100%;
-    animation: shimmerEffect 2s ease-in-out infinite;
-  }
-
-  @keyframes shimmerEffect {
-    0% {
-      background-position: -200% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
-  }
-
-  /* Main content transition */
   main {
     transition: opacity 0.5s ease-in;
+  }
+
+  /* Mobile-First Responsive Design */
+  @media (max-width: 768px) {
+    .cert-orb {
+      display: none;
+    }
+  }
+
+  /* Print Optimizations */
+  @media print {
+    .cert-orbs,
+    .cert-orb,
+    header,
+    .fixed {
+      display: none !important;
+    }
+
+    main {
+      background: white !important;
+      color: black !important;
+    }
+
+    .card-modern {
+      background: white !important;
+      border: 2px solid #000 !important;
+      box-shadow: none !important;
+      break-inside: avoid;
+    }
+
+    .text-white,
+    .text-gray-300 {
+      color: black !important;
+    }
+
+    .text-emerald-300,
+    .text-green-300,
+    .text-cyan-300,
+    .text-orange-300 {
+      color: #374151 !important;
+    }
+
+    .bg-gradient-to-r {
+      background: #f3f4f6 !important;
+    }
+  }
+
+  /* Accessibility Improvements */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* CSS Custom Properties for Theme Colors */
+  :root {
+    --color-primary-text: #f8fafc;
+    --color-secondary-text: #e2e8f0;
+    --color-accent-text: #60a5fa;
+    --color-muted-text: #94a3b8;
+    --color-background: linear-gradient(135deg, #0f172a, #1e293b, #3730a3);
+    --color-card-bg: rgba(255, 255, 255, 0.08);
+    --color-border: rgba(255, 255, 255, 0.12);
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+    --color-blue: #3b82f6;
+    --color-purple: #8b5cf6;
+  }
+
+  /* Apply CSS Variables */
+  .text-primary {
+    color: var(--color-primary-text) !important;
+  }
+  .text-secondary {
+    color: var(--color-secondary-text) !important;
+  }
+  .text-accent {
+    color: var(--color-accent-text) !important;
+  }
+  .text-muted {
+    color: var(--color-muted-text) !important;
   }
 </style>

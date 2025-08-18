@@ -52,7 +52,7 @@
 
 <main class="min-h-screen relative overflow-hidden">
     <!-- Animated Background with Floating Shapes -->
-    <div class="fixed inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900"></div>
+    <div class="fixed inset-0 bg-gradient-to-br from-gray-900 via-slate-800 to-zinc-900"></div>
     <div class="fixed inset-0">
         <div class="floating-shapes">
             <div class="shape shape-1"></div>
@@ -89,14 +89,14 @@
             <div class="w-full max-w-2xl">
                 <!-- Hero Section -->
                 <div class="text-center mb-12 hero-animation">
-                    <div class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl mb-6 glow-effect">
+                    <div class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl mb-6 glow-effect">
                         <svg class="w-10 h-10 sm:w-12 sm:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
                     </div>
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 font-space-grotesk">
                         Verify Your
-                        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 typing-animation">
+                        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400 typing-animation">
                             Certificate
                         </span>
                     </h1>
@@ -118,8 +118,8 @@
                                 type="text"
                                 bind:value={registrationNumber}
                                 on:keypress={handleKeyPress}
-                                placeholder="Enter Registration Number (e.g., S25WD-B01-002)"
-                                class="block w-full pl-12 pr-4 py-4 text-lg font-medium text-white placeholder-gray-400 bg-white/5 border border-white/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400/50 transition-all duration-200 backdrop-blur-sm font-inter"
+                                placeholder="Enter Registration Number (e.g., S25WD-B00-000)"
+                                class="block w-full pl-12 pr-4 py-4 text-lg font-medium text-white placeholder-gray-400 bg-white/5 border border-white/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400/50 transition-all duration-200 backdrop-blur-sm font-inter"
                                 autocomplete="off"
                                 spellcheck="false"
                             />
@@ -139,8 +139,8 @@
                             disabled={isLoading}
                             class="relative w-full group"
                         >
-                            <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl blur-lg opacity-25 group-hover:opacity-50 transition-opacity duration-200"></div>
-                            <div class="relative flex items-center justify-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 disabled:from-gray-600 disabled:to-gray-700 text-white font-semibold rounded-2xl transition-all duration-200 transform group-hover:scale-[1.02] group-active:scale-[0.98] font-inter">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl blur-lg opacity-25 group-hover:opacity-50 transition-opacity duration-200"></div>
+                            <div class="relative flex items-center justify-center px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 disabled:from-gray-600 disabled:to-gray-700 text-white font-semibold rounded-2xl transition-all duration-200 transform group-hover:scale-[1.02] group-active:scale-[0.98] font-inter">
                                 {#if isLoading}
                                     <svg class="animate-spin -ml-1 mr-3 h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -161,13 +161,13 @@
                 <!-- Features Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-12 features-animation">
                     <div class="text-center p-6 backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300 feature-card">
-                        <div class="inline-flex items-center justify-center w-12 h-12 bg-emerald-500/20 rounded-xl mb-4">
-                            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="inline-flex items-center justify-center w-12 h-12 bg-green-500/20 rounded-xl mb-4">
+                            <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                             </svg>
                         </div>
                         <h3 class="text-white font-semibold mb-2 font-space-grotesk">Instant Verification</h3>
-                        <p class="text-gray-400 text-sm font-inter">Get results in seconds</p>
+                        <p class="text-gray-400 text-sm font-inter">Get results in seconds.</p>
                     </div>
                     <div class="text-center p-6 backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300 feature-card">
                         <div class="inline-flex items-center justify-center w-12 h-12 bg-blue-500/20 rounded-xl mb-4">
@@ -176,16 +176,16 @@
                             </svg>
                         </div>
                         <h3 class="text-white font-semibold mb-2 font-space-grotesk">100% Secure</h3>
-                        <p class="text-gray-400 text-sm font-inter">Bank-level security</p>
+                        <p class="text-gray-400 text-sm font-inter">To safeguard your data.</p>
                     </div>
                     <div class="text-center p-6 backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-all duration-300 feature-card">
-                        <div class="inline-flex items-center justify-center w-12 h-12 bg-purple-500/20 rounded-xl mb-4">
-                            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="inline-flex items-center justify-center w-12 h-12 bg-amber-500/20 rounded-xl mb-4">
+                            <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                             </svg>
                         </div>
                         <h3 class="text-white font-semibold mb-2 font-space-grotesk">Lightning Fast</h3>
-                        <p class="text-gray-400 text-sm font-inter">Optimized performance</p>
+                        <p class="text-gray-400 text-sm font-inter">Optimized performance.</p>
                     </div>
                 </div>
             </div>
@@ -241,7 +241,7 @@
 
     .shape {
         position: absolute;
-        background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(168, 85, 247, 0.1));
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(249, 115, 22, 0.1));
         border-radius: 50%;
         animation: float 20s infinite ease-in-out;
     }
@@ -277,13 +277,13 @@
 
     /* Glow Effect */
     .glow-effect {
-        box-shadow: 0 0 50px rgba(96, 165, 250, 0.3);
+        box-shadow: 0 0 50px rgba(245, 158, 11, 0.3);
         animation: pulse-glow 2s ease-in-out infinite alternate;
     }
 
     @keyframes pulse-glow {
-        from { box-shadow: 0 0 50px rgba(96, 165, 250, 0.3); }
-        to { box-shadow: 0 0 80px rgba(96, 165, 250, 0.6); }
+        from { box-shadow: 0 0 50px rgba(245, 158, 11, 0.3); }
+        to { box-shadow: 0 0 80px rgba(245, 158, 11, 0.6); }
     }
 
     /* Typing Animation */
@@ -352,9 +352,9 @@
     :root {
         --color-primary-text: #f8fafc;
         --color-secondary-text: #e2e8f0;
-        --color-accent-text: #60a5fa;
+        --color-accent-text: #f59e0b;
         --color-muted-text: #94a3b8;
-        --color-background: #0f0f23;
+        --color-background: #18181b;
         --color-card-bg: rgba(255, 255, 255, 0.1);
         --color-border: rgba(255, 255, 255, 0.2);
         --color-success: #10b981;
