@@ -23,7 +23,6 @@ export default defineConfig({
 	server: {
 		host: true,
 		port: 5173,
-		strictPort: true,
-		allowedHosts: ['vtleqb-ip-103-169-64-93.tunnelmole.net'],
+		strictPort: true
 	}
 });
