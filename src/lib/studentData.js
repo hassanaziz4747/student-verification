@@ -3,6 +3,28 @@ import { join } from 'path';
 
 let studentsCache = null;
 
+function parseCSVLine(line) {
+    const result = [];
+    let current = '';
+    let inQuotes = false;
+    
+    for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        
+        if (char === '"') {
+            inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+            result.push(current.trim());
+            current = '';
+        } else {
+            current += char;
+        }
+    }
+    
+    result.push(current.trim());
+    return result;
+}
+
 export function loadStudentData() {
     if (studentsCache) return studentsCache;
 
@@ -10,16 +32,16 @@ export function loadStudentData() {
         const csvPath = join(process.cwd(), 'static', 'qr-data.csv');
         const csvContent = readFileSync(csvPath, 'utf-8');
 
-        // Simple CSV parsing - split by lines and then by tabs
+        // Simple CSV parsing - split by lines and then by commas (handling quoted fields)
         const lines = csvContent.trim().split('\n');
-        const headers = lines[0].split('\t').map(h => h.trim());
+        const headers = parseCSVLine(lines[0]);
 
         console.log('Headers found:', headers); // Debug log
 
         studentsCache = new Map();
 
         for (let i = 1; i < lines.length; i++) {
-            const values = lines[i].split('\t').map(v => v?.trim() || '');
+            const values = parseCSVLine(lines[i]);
 
             if (values.length >= headers.length) {
                 const student = {
@@ -28,7 +50,7 @@ export function loadStudentData() {
                     studentName: values[2],
                     fatherName: values[3],
                     course: values[4],
-                    courseContent: values[5]?.replace(/"/g, ''), // Remove quotes
+                    courseContent: values[5], // Quotes already handled by parseCSVLine
                     age: values[6],
                     grade: values[7]
                 };
