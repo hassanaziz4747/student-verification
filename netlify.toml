@@ -1,0 +1,12 @@
+[build]
+  command = "pnpm build"
+  publish = "build/client"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[functions]
+  directory = "build/server"
+
+# For SvelteKit with Netlify adapter, the functions are auto-generated
+# No manual redirects needed for API routes as they're handled by the adapter
